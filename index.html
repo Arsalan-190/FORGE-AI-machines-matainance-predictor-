@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1220">
+  <title>ForgeAI | Predictive Maintenance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview" aria-label="ForgeAI home">
+        <span class="brand-mark">F<span>+</span></span>
+        <span class="brand-copy"><strong>FORGE<span>AI</span></strong><small>INDUSTRIAL INTELLIGENCE</small></span>
+      </a>
+
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="navigation" aria-label="Main navigation">
+        <a class="nav-link active" href="#overview"><span class="nav-icon">◫</span> Overview</a>
+        <a class="nav-link" href="#predict"><span class="nav-icon">⌁</span> Failure prediction</a>
+        <a class="nav-link" href="#performance"><span class="nav-icon">▥</span> Model analytics</a>
+        <a class="nav-link" href="#about"><span class="nav-icon">ⓘ</span> Project details</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="system-card">
+          <span class="pulse-dot"></span>
+          <div><strong>Prediction engine</strong><small id="engine-status">Checking system…</small></div>
+        </div>
+        <div class="sidebar-foot">FORGEAI PLATFORM <span>v1.0</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="overview">
+      <header class="topbar">
+        <button class="menu-button" id="menu-button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong>Overview</strong></div>
+        <div class="topbar-right"><span class="live-pill"><i></i> SYSTEM STATUS</span><span class="avatar">AI</span></div>
+      </header>
+
+      <section class="page-heading">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> PREDICTIVE OPERATIONS</div>
+          <h1>Machine intelligence,<br><span>before failure.</span></h1>
+          <p class="heading-copy">Assess machine conditions, estimate failure risk, and make more informed maintenance decisions using sensor data.</p>
+        </div>
+        <div class="heading-decoration" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="core">✳</div><span class="orbit-tag tag-one">SENSORS</span><span class="orbit-tag tag-two">ML MODEL</span>
+        </div>
+      </section>
+
+      <section class="metric-grid" aria-label="Project summary">
+        <article class="metric-card">
+          <div class="metric-top"><span>ACTIVE MODEL</span><span class="metric-symbol blue-symbol">⌘</span></div>
+          <div class="metric-value model-name">Random Forest</div>
+          <div class="metric-foot"><span class="mini-dot blue-dot"></span> Supervised classification</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-top"><span>MODEL ACCURACY</span><span class="metric-symbol violet-symbol">◎</span></div>
+          <div class="metric-value" id="accuracy-card">—</div>
+          <div class="metric-foot">Held-out test set</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-top"><span>INPUT FEATURES</span><span class="metric-symbol teal-symbol">⌗</span></div>
+          <div class="metric-value">06</div>
+          <div class="metric-foot">Sensor & product attributes</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-top"><span>DATASET</span><span class="metric-symbol amber-symbol">▤</span></div>
+          <div class="metric-value">AI4I 2020</div>
+          <div class="metric-foot">Predictive maintenance benchmark</div>
+        </article>
+      </section>
+
+      <div class="section-heading" id="predict">
+        <div><div class="eyebrow">PREDICTION WORKSPACE</div><h2>Machine health assessment</h2></div>
+        <span class="section-tag"><span class="mini-dot teal-dot"></span> Ready for input</span>
+      </div>
+
+      <section class="prediction-layout">
+        <article class="surface input-surface">
+          <div class="surface-heading">
+            <div class="surface-title-icon">⌁</div>
+            <div><h3>Sensor parameters</h3><p>Enter the current operating measurements.</p></div>
+          </div>
+          <form id="prediction-form">
+            <div class="form-grid">
+              <label class="field field-full">Product type
+                <select name="Type">
+                  <option value="L">L — Low quality variant</option>
+                  <option value="M">M — Medium quality variant</option>
+                  <option value="H">H — High quality variant</option>
+                </select>
+              </label>
+              <label class="field">Air temperature <span>(K)</span>
+                <div class="input-wrap"><input name="Air temperature [K]" type="number" value="300" min="0.01" step="any" required><span class="input-unit">K</span></div>
+              </label>
+              <label class="field">Process temperature <span>(K)</span>
+                <div class="input-wrap"><input name="Process temperature [K]" type="number" value="310" min="0.01" step="any" required><span class="input-unit">K</span></div>
+              </label>
+              <label class="field">Rotational speed <span>(rpm)</span>
+                <div class="input-wrap"><input name="Rotational speed [rpm]" type="number" value="1500" min="0.01" step="any" required><span class="input-unit">RPM</span></div>
+              </label>
+              <label class="field">Torque <span>(Nm)</span>
+                <div class="input-wrap"><input name="Torque [Nm]" type="number" value="40" min="0" step="any" required><span class="input-unit">Nm</span></div>
+              </label>
+              <label class="field field-full">Tool wear <span>(minutes)</span>
+                <div class="input-wrap"><input name="Tool wear [min]" type="number" value="100" min="0" step="any" required><span class="input-unit">MIN</span></div>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="secondary-button" id="reset-button">Reset values</button>
+              <button id="predict-button" type="submit" class="primary-button"><span>Run prediction</span><span class="button-arrow">↗</span></button>
+            </div>
+            <p id="error" class="error" role="alert" aria-live="polite"></p>
+          </form>
+        </article>
+
+        <article class="surface result-surface">
+          <div class="surface-heading result-heading">
+            <div class="surface-title-icon result-icon">◉</div>
+            <div><h3>Prediction report</h3><p>Model output for the submitted readings.</p></div>
+            <span class="report-badge">LIVE OUTPUT</span>
+          </div>
+          <div id="result" class="result-box pending">
+            <div class="result-status-icon">⌁</div>
+            <div><span class="result-overline">AWAITING INPUT</span><h3>Ready to assess</h3><p>Submit sensor values to generate a machine failure estimate.</p></div>
+          </div>
+          <div class="risk-block">
+            <div class="risk-label"><span>Failure probability</span><strong id="probability">—</strong></div>
+            <div class="risk-track"><div class="risk-fill" id="risk-fill"></div></div>
+            <div class="risk-scale"><span>0% · Lower estimated risk</span><span>100%</span></div>
+          </div>
+          <div class="report-details">
+            <div><span>Selected algorithm</span><strong id="used-model">Random Forest</strong></div>
+            <div><span>Predicted class</span><strong id="predicted-class">Not calculated</strong></div>
+            <div><span>Assessment ID</span><strong id="assessment-id">—</strong></div>
+          </div>
+          <div class="disclaimer"><span>ⓘ</span><p>This is a model estimate, not a guarantee of actual machine condition. Validate results before operational use.</p></div>
+        </article>
+      </section>
+
+      <section class="surface performance-surface" id="performance">
+        <div class="surface-heading performance-heading">
+          <div class="surface-title-icon analytics-icon">▥</div>
+          <div><h3>Model performance</h3><p>Evaluation metrics calculated from the held-out test set.</p></div>
+          <span class="report-badge">TEST METRICS</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>MODEL</th><th>ACCURACY</th><th>PRECISION</th><th>RECALL</th><th>F1 SCORE</th></tr></thead>
+            <tbody id="metrics"><tr><td colspan="5" class="table-loading">Loading model metrics…</td></tr></tbody>
+          </table>
+        </div>
+        <div class="table-foot"><span><i class="mini-dot teal-dot"></i> Metrics supplied by the backend API</span><span id="metrics-status">Connecting to model…</span></div>
+      </section>
+
+      <section class="about-grid" id="about">
+        <article class="surface about-card">
+          <div class="about-icon">⌘</div><div><div class="eyebrow">ABOUT THE MODEL</div><h3>Predictive maintenance with machine learning</h3><p>This educational prototype uses a Random Forest classifier trained on the AI4I 2020 predictive maintenance dataset. It uses product type, air temperature, process temperature, rotational speed, torque, and tool wear to estimate machine failure.</p></div>
+        </article>
+        <article class="surface integrity-card">
+          <div class="integrity-mark">!</div><div><div class="eyebrow">MODEL INTEGRITY</div><h3>Use with appropriate caution</h3><p>Failure events are comparatively rare. Review recall, precision, class balance, and real-world validation before using predictions to guide maintenance decisions.</p></div>
+        </article>
+      </section>
+
+      <footer class="footer"><span>FORGEAI <b>·</b> PREDICTIVE MAINTENANCE</span><span>FASTAPI <i></i> RANDOM FOREST <i></i> AI4I 2020</span></footer>
+    </main>
+  </div>
+
+<script>
+const form = document.getElementById("prediction-form");
+const errorBox = document.getElementById("error");
+const predictButton = document.getElementById("predict-button");
+const defaults = {
+  "Type": "L",
+  "Air temperature [K]": "300",
+  "Process temperature [K]": "310",
+  "Rotational speed [rpm]": "1500",
+  "Torque [Nm]": "40",
+  "Tool wear [min]": "100"
+};
+
+document.getElementById("reset-button").addEventListener("click", () => {
+  Object.entries(defaults).forEach(([key, value]) => { form.elements[key].value = value; });
+  errorBox.textContent = "";
+});
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  errorBox.textContent = "";
+  predictButton.disabled = true;
+  predictButton.querySelector("span:first-child").textContent = "Analyzing readings…";
+
+  const payload = Object.fromEntries(new FormData(form).entries());
+  ["Air temperature [K]", "Process temperature [K]", "Rotational speed [rpm]", "Torque [Nm]", "Tool wear [min]"]
+    .forEach(key => payload[key] = Number(payload[key]));
+
+  try {
+    const response = await fetch("/api/predict", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(payload)
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.detail || "Prediction request failed.");
+
+    const failed = data.prediction === 1;
+    const resultBox = document.getElementById("result");
+    resultBox.className = "result-box " + (failed ? "failure" : "success");
+    resultBox.replaceChildren();
+
+    const icon = document.createElement("div");
+    icon.className = "result-status-icon";
+    icon.textContent = failed ? "!" : "✓";
+    const content = document.createElement("div");
+    const overline = document.createElement("span");
+    overline.className = "result-overline";
+    overline.textContent = failed ? "ELEVATED ATTENTION" : "MODEL ASSESSMENT";
+    const heading = document.createElement("h3");
+    heading.textContent = failed ? "Potential failure detected" : "No failure predicted";
+    const message = document.createElement("p");
+    message.textContent = data.message;
+    content.append(overline, heading, message);
+    resultBox.append(icon, content);
+
+    const probability = Math.max(0, Math.min(1, Number(data.failure_probability) || 0)) * 100;
+    document.getElementById("probability").textContent = probability.toFixed(2) + "%";
+    document.getElementById("risk-fill").style.width = probability + "%";
+    document.getElementById("risk-fill").className = "risk-fill " + (failed ? "high-risk" : "low-risk");
+    document.getElementById("used-model").textContent = data.model || "Random Forest";
+    document.getElementById("predicted-class").textContent = failed ? "1 — Failure" : "0 — No failure";
+    document.getElementById("assessment-id").textContent = "FA-" + Date.now().toString().slice(-8);
+  } catch (error) {
+    errorBox.textContent = error.message || "Unable to connect to the prediction API.";
+  } finally {
+    predictButton.disabled = false;
+    predictButton.querySelector("span:first-child").textContent = "Run prediction";
+  }
+});
+
+async function loadMetrics() {
+  const body = document.getElementById("metrics");
+  try {
+    const [metricsResponse, healthResponse] = await Promise.all([
+      fetch("/api/metrics"),
+      fetch("/api/health").catch(() => null)
+    ]);
+    if (!metricsResponse.ok) throw new Error("Metrics endpoint unavailable");
+    const metrics = await metricsResponse.json();
+    if (!Object.keys(metrics).length) throw new Error("Model metrics are not available. Check dataset and training.");
+    const accuracy = Number(metrics.Accuracy);
+    document.getElementById("accuracy-card").textContent = Number.isFinite(accuracy) ? (accuracy * 100).toFixed(1) + "%" : "—";
+    body.replaceChildren();
+    const row = document.createElement("tr");
+    ["Random Forest", metrics.Accuracy, metrics.Precision, metrics.Recall, metrics["F1 Score"]].forEach((value, index) => {
+      const cell = document.createElement("td");
+      if (index === 0) {
+        const badge = document.createElement("span");
+        badge.className = "model-badge";
+        badge.textContent = value;
+        cell.appendChild(badge);
+      } else {
+        const number = Number(value);
+        cell.textContent = Number.isFinite(number) ? number.toFixed(4) : "—";
+      }
+      row.appendChild(cell);
+    });
+    body.appendChild(row);
+    document.getElementById("metrics-status").textContent = "Metrics loaded successfully";
+    if (healthResponse && healthResponse.ok) {
+      const health = await healthResponse.json();
+      document.getElementById("engine-status").textContent = health.model_ready ? "Model ready" : "Model unavailable";
+    } else {
+      document.getElementById("engine-status").textContent = "API responding";
+    }
+  } catch (error) {
+    body.replaceChildren();
+    const row = document.createElement("tr");
+    const cell = document.createElement("td");
+    cell.colSpan = 5;
+    cell.className = "table-loading";
+    cell.textContent = error.message || "Metrics unavailable. Check backend and model training.";
+    row.appendChild(cell);
+    body.appendChild(row);
+    document.getElementById("metrics-status").textContent = "Unable to load metrics";
+    document.getElementById("engine-status").textContent = "Check backend";
+    document.getElementById("accuracy-card").textContent = "—";
+  }
+}
+loadMetrics();
+
+document.getElementById("menu-button").addEventListener("click", () => {
+  const sidebar = document.getElementById("sidebar");
+  const button = document.getElementById("menu-button");
+  const open = sidebar.classList.toggle("sidebar-open");
+  button.setAttribute("aria-expanded", String(open));
+});
+document.querySelectorAll(".nav-link").forEach(link => link.addEventListener("click", () => {
+  document.querySelectorAll(".nav-link").forEach(item => item.classList.remove("active"));
+  link.classList.add("active");
+  document.getElementById("sidebar").classList.remove("sidebar-open");
+  document.getElementById("menu-button").setAttribute("aria-expanded", "false");
+}));
+</script>
+</body>
+</html>
